@@ -80,7 +80,6 @@ function! rgv#rg(args) abort
       let command = add(command, a:args)
     endif
   endif
-  echom join(command)
   let command = split(&shell) + split(&shellcmdflag) + [join(command)]
   if has('nvim')
     call jobstart(command, options)
