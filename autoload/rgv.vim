@@ -23,13 +23,13 @@ function! rgv#toggle_locwin()
       lopen
     endif
   catch
-    call s:printerr(v:exception)
+    call rgv#printerr(v:exception)
   endtry
 endfunction
 
 function! s:exit_cb(jobid, status, ...)
   if a:status == 2
-    call s:printerr('rg fails')
+    call rgv#printerr('rg fails')
     return
   elseif a:status == 1
     echom 'no match found'
@@ -69,7 +69,7 @@ function! rgv#rg(args) abort
   if empty(a:args)
     let word = expand("<cword>")
     if empty(word)
-      call s:printerr('expected pattern')
+      call rgv#printerr('expected pattern')
       return
     endif
     let command = add(command, word)
@@ -93,7 +93,7 @@ function! rgv#rga(args)
   if empty(a:args)
     let word = expand("<cword>")
     if empty(word)
-      call s:printerr('expected pattern')
+      call rgv#printerr('expected pattern')
       return
     endif
     let command = add(command, word)
@@ -103,7 +103,7 @@ function! rgv#rga(args)
   call rgv#rg(command)
 endfunction
 
-function! s:printerr(msg)
+function! rgv#printerr(msg)
   echohl ErrorMsg
   echom a:msg
   echohl None

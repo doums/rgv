@@ -10,6 +10,13 @@ let g:rgv_plugin = 1
 let s:save_cpo = &cpo
 set cpo&vim
 
+if !executable('rg')
+  call rgv#printerr('rg command not found')
+  let &cpo = s:save_cpo
+  unlet s:save_cpo
+  finish
+endif
+
 command -nargs=* Rg call rgv#rg(<q-args>)
 command -nargs=* Rga call rgv#rga(<q-args>)
 noremap <silent><unique> <Plug>RgToggle :call rgv#toggle_locwin()<CR>
