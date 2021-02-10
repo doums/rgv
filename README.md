@@ -16,7 +16,7 @@ Plug 'doums/rgv'
 
 If you use vim package `:h packages`.
 
-#### commands:
+#### commands
 ```
 :Rg arg(s)
 ```
@@ -28,7 +28,7 @@ runs `rg --vimgrep --hidden --no-ignore` followed by your `args`
 
 If no `arg` is provided, default to the word under the cursor.
 
-#### map:
+#### map
 ```
 <Plug>RgToggle
 ```
